@@ -71,6 +71,6 @@ class PostsDAO:
             if pk == post['pk']:
                 return post
 
-
-post_ex = PostsDAO('../data/data.json')
-print(post_ex.get_post_by_pk(1))
+#
+# post_ex = PostsDAO('../data/data.json')
+# print(post_ex.get_posts_by_user('leo'))
