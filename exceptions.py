@@ -1,0 +1,2 @@
+class DataSourceBrokenError(Exception):
+    pass
