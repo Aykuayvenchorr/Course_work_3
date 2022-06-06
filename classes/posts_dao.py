@@ -34,15 +34,15 @@ class PostsDAO:
         user_post = []
         names = []
         for post in posts:
-            names.append(post['poster_name'])
-            if user_name == post['poster_name']:
+            names.append(post.poster_name)
+            if user_name == post.poster_name:
                 user_post.append(post)
         if user_name not in names:
             raise ValueError('Такого пользователя нет')  # maybe error
         return user_post
 
-    def get_comments_all(self, path='../data/comments.json'):
-        with open(path, encoding='utf-8') as file:
+    def get_comments_all(self):
+        with open('../data/comments.json', encoding='utf-8') as file:
             comments_data = json.load(file)
             return comments_data
 
@@ -56,21 +56,22 @@ class PostsDAO:
                 user_comments.append(comment)
         if post_id not in list_id:
             raise ValueError('Такого поста нет')
-        return user_comments
+        else:
+            return user_comments
 
     def search_for_posts(self, query):
         output_data = []
         for post in self.load_posts():
-            if query in post["content"]:
+            if query in post.content:
                 output_data.append(post)
         return output_data
 
     def get_post_by_pk(self, pk):
         posts = self.get_posts_all()
         for post in posts:
-            if pk == post['pk']:
+            if pk == post.pk:
                 return post
 
-#
-# post_ex = PostsDAO('../data/data.json')
-# print(post_ex.get_posts_by_user('leo'))
+
+post_ex = PostsDAO('../data/data.json')
+print(post_ex.get_comments_by_post_id(1))

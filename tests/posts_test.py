@@ -14,8 +14,8 @@ class TestPosts:
 
     def test_get_comments_by_post_id(self):
         post = PostsDAO(path)
-        comments = post.get_comments_by_post_id(1)
-        assert len(comments) == 4, 'Ошибка в получении комментариев'
+        comments_user = post.get_comments_by_post_id(1)
+        assert len(comments_user) == 4, 'Ошибка в получении комментариев'
 
     # def test_search_for_post(self):
     #     post = PostsDAO(path)
