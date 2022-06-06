@@ -74,4 +74,4 @@ class PostsDAO:
 
 
 post_ex = PostsDAO('../data/data.json')
-print(post_ex.get_comments_by_post_id(1))
+print(post_ex.search_for_posts('закат'))
