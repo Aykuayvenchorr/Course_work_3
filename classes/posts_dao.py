@@ -41,13 +41,13 @@ class PostsDAO:
             raise ValueError('Такого пользователя нет')  # maybe error
         return user_post
 
-    def get_comments_all(self):
-        with open('../data/comments.json', encoding='utf-8') as file:
+    def get_comments_all(self, path):
+        with open(path, encoding='utf-8') as file:
             comments_data = json.load(file)
             return comments_data
 
-    def get_comments_by_post_id(self, post_id):
-        comments = self.get_comments_all()  # maybe error
+    def get_comments_by_post_id(self, post_id, path):
+        comments = self.get_comments_all(path)  # maybe error
         user_comments = []
         list_id = []
         for comment in comments:
@@ -72,6 +72,5 @@ class PostsDAO:
             if pk == post.pk:
                 return post
 
-
-post_ex = PostsDAO('../data/data.json')
-print(post_ex.search_for_posts('закат'))
+# post_ex = PostsDAO('../data/data.json')
+# print(post_ex.get_comments_all('../data/comments.json'))
