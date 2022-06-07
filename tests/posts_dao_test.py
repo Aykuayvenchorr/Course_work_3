@@ -46,7 +46,7 @@ class TestPostsDAO:
         pks = set([post.pk for post in posts])
         assert pks == correct_pks, 'Не совпадают полученные id'
 
-# Функция
+# Функция получения постов по имени автора
 
     def test_get_post_by_user(self, post_dao):
         user_posts = post_dao.get_posts_by_user('leo')
@@ -61,4 +61,10 @@ class TestPostsDAO:
         for res in result:
             assert res.poster_name == 'hank', 'Ошибка в поиске постов'
 
+# Функция получения одного поста по pk
+
+    @pytest.mark.parametrize('pk', [1, 2, 3, 4, 5, 6, 7, 8])
+    def test_get_post_by_pk_correct_id(self, post_dao, pk):
+        post = post_dao.get_post_by_pk(pk)
+        assert post.pk == pk, f'Incorrect pk for requested post with pk == {pk}'
 
