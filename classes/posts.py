@@ -9,10 +9,11 @@ class Posts:
         self.likes_count = likes_count
 
     def as_dict(self):
+        """Возвращает посты в виде словаря"""
         fields = ["pk", "poster_name", "poster_avatar", "pic", "content", "views_count", "likes_count"]
         post_dict = {f: getattr(self, f) for f in fields}
         return post_dict
 
     def __repr__(self):
-        return f'{self.poster_name} {self.pk}'
+        return f'{self.poster_name} {self.pk} {self.content}'
 
